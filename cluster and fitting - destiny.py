@@ -16,6 +16,8 @@ second_year = '2020'
 df = pd.read_excel('https://api.worldbank.org/v2/en/indicator/AG.LND.ARBL.ZS?downloadformat=excel', skiprows=3)
 df = df.drop(['Country Code', 'Indicator Name', 'Indicator Code'], axis=1)
 cluster_data = df.loc[df.index, ["Country Name", first_year, second_year]]
+print(cluster_data)
+print()
 
 x = cluster_data[[first_year, second_year]].dropna().values
 
@@ -40,6 +42,7 @@ plt.scatter(x[y_kmeans == 2, 0], x[y_kmeans == 2, 1], s = 50, c = 'green',label 
 plt.scatter(x[y_kmeans == 3, 0], x[y_kmeans == 3, 1], s = 50, c = 'blue',label = 'Iabel 3')
 plt.scatter(kmeans.cluster_centers_[:, 0], kmeans.cluster_centers_[:,1], s = 10, c = 'red', label = 'Centroids')
 plt.legend()
+plt.title('K-means Clustering')
 plt.show()
 
 
