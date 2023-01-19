@@ -59,3 +59,25 @@ df_fitting = df2[["Year", "Nigeria"]].apply(pd.to_numeric, errors='coerce')
 x = df_fitting.dropna().to_numpy()
 print(x)
 print()
+
+# choose the input and output variables
+x, y = x[:, 0], x[:, 1]
+
+# curve fit
+popt, _ = opt.curve_fit(objective, x, y)
+
+# summarize the parameter values
+a, b, c, d = popt
+print('y = %.5f * x + %.5f * x^2 + %.5f' % (a, b, c))
+print()
+
+param, covar = opt.curve_fit(objective, x, y)
+
+sigma = np.sqrt(np.diag(covar))
+low, up = err.err_ranges(x, objective, popt, sigma)
+print(low, up)
+print('covar = ', covar)
+print()
+# plot input vs output
+plt.scatter(x, y)
+
