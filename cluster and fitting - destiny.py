@@ -41,3 +41,21 @@ plt.scatter(x[y_kmeans == 3, 0], x[y_kmeans == 3, 1], s = 50, c = 'blue',label =
 plt.scatter(kmeans.cluster_centers_[:, 0], kmeans.cluster_centers_[:,1], s = 10, c = 'red', label = 'Centroids')
 plt.legend()
 plt.show()
+
+
+# define the true objective function
+def objective(x, a, b, c, d):
+    return a*x**3 + b*x**2 + c*x + d
+
+df2 = df.T
+df2 = df2.rename(columns=df2.iloc[0])
+df2 = df2.drop(index=df2.index[0], axis=0)
+df2['Year'] = df2.index
+print(df2)
+print()
+
+#get dataset
+df_fitting = df2[["Year", "Nigeria"]].apply(pd.to_numeric, errors='coerce')
+x = df_fitting.dropna().to_numpy()
+print(x)
+print()
