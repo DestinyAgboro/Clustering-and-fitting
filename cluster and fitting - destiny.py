@@ -30,4 +30,14 @@ plt.title('getting the cluster')
 plt.xlabel('Number of clusters')
 plt.ylabel('WCSS') #within cluster sum of squares
 plt.show()
- 
+
+kmeans = KMeans(n_clusters = 4, init = 'k-means++', max_iter = 300, n_init = 10, random_state = 0)
+y_kmeans = kmeans.fit_predict(x)
+
+plt.scatter(x[y_kmeans == 0, 0], x[y_kmeans == 0, 1], s = 50, c = 'purple',label = 'label 0')
+plt.scatter(x[y_kmeans == 1, 0], x[y_kmeans == 1, 1], s = 50, c = 'orange',label = 'label 1')
+plt.scatter(x[y_kmeans == 2, 0], x[y_kmeans == 2, 1], s = 50, c = 'green',label = 'label 2')
+plt.scatter(x[y_kmeans == 3, 0], x[y_kmeans == 3, 1], s = 50, c = 'blue',label = 'Iabel 3')
+plt.scatter(kmeans.cluster_centers_[:, 0], kmeans.cluster_centers_[:,1], s = 10, c = 'red', label = 'Centroids')
+plt.legend()
+plt.show()
