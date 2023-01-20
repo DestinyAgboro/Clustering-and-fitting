@@ -51,8 +51,9 @@ plt.show()
 # define the true objective function
 def objective(x, a, b, c, d):
     """
-    objective function have five parameter which are x a,b,c and d
-    which also return a*x**3 + b*x**2 + c*x + d
+    objective function have five parameters which are x a,b,c and d
+    x: independent variable
+    a, b, c and  d parameters to be fitted
     """
     return a*x**3 + b*x**2 + c*x + d
 
@@ -92,11 +93,19 @@ plt.scatter(x, y)
 
 # define a sequence of inputs between the smallest and largest known inputs
 x_line = np.arange(min(x), max(x) + 1, 1)
+print(x_line)
+print()
 
 # calculate the output for the range
 y_line = objective(x_line, a, b, c, d)
+print(y_line)
+print()
 
 # create a line plot for the mapping function
 plt.plot(x_line, y_line, '--', color='red')
 plt.savefig('curve_fit.png')
+plt.xlabel('Year')
+plt.ylabel('Y')
+plt.title('A line plot for the mapping function')
 plt.show()
+
