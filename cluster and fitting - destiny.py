@@ -42,6 +42,8 @@ plt.scatter(x[y_kmeans == 2, 0], x[y_kmeans == 2, 1], s = 50, c = 'green',label 
 plt.scatter(x[y_kmeans == 3, 0], x[y_kmeans == 3, 1], s = 50, c = 'blue',label = 'Iabel 3')
 plt.scatter(kmeans.cluster_centers_[:, 0], kmeans.cluster_centers_[:,1], s = 10, c = 'red', label = 'Centroids')
 plt.legend()
+plt.xlabel('2020')
+plt.ylabel('1975')
 plt.title('K-means Clustering')
 plt.show()
 
@@ -84,3 +86,13 @@ print()
 # plot input vs output
 plt.scatter(x, y)
 
+# define a sequence of inputs between the smallest and largest known inputs
+x_line = np.arange(min(x), max(x) + 1, 1)
+
+# calculate the output for the range
+y_line = objective(x_line, a, b, c, d)
+
+# create a line plot for the mapping function
+plt.plot(x_line, y_line, '--', color='red')
+plt.savefig('curve_fit.png')
+plt.show()
