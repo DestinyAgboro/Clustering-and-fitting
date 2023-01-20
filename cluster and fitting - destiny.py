@@ -50,6 +50,10 @@ plt.show()
 
 # define the true objective function
 def objective(x, a, b, c, d):
+    """
+    objective function have five parameter which are x a,b,c and d
+    which also return a*x**3 + b*x**2 + c*x + d
+    """
     return a*x**3 + b*x**2 + c*x + d
 
 df2 = df.T
